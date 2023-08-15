@@ -1,0 +1,28 @@
+{
+	"name": "media-library",
+	"version": "1.0.0",
+	"description": "Media library React component",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/vebb-tech/quickhub--media-library--react-component.git"
+	},
+	"author": "The vebb.tech Team",
+	"bugs": {
+		"url": "https://github.com/vebb-tech/quickhub--media-library--react-component/issues"
+	},
+	"homepage": "https://github.com/vebb-tech/quickhub--media-library--react-component#readme",
+	"peerDependencies": {  
+		"tailwindcss": "^3.3.3",    
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"devDependencies": {
+		"tailwindcss": "^3.3.3",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	}
+}
