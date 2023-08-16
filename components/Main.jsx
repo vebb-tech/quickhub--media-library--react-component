@@ -97,7 +97,7 @@ export default ({ isOpen, user, user_tenants }) => {
     const classes = "main flex-1 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 content-baseline p-2 md:p-4" // gap-2 md:gap-4
 
     // Loading state animate-pulse
-    // if (!files)
+    if (!files)
     return <div className={classes}>
         {[
             { temp: true },
