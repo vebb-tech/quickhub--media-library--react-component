@@ -11,7 +11,7 @@ export default () => {
     // if( !selectedFile ) return <></>
 
     return <aside className={cls(
-        "right border-l p-4",
+        "right border-l p-4 hidden lg:block",
         menuOpen ? "w-64" : "" // w-12
     )}>
         {selectedFile && (

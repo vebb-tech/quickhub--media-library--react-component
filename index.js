@@ -9,6 +9,7 @@ import Main from "./components/Main";
 import Footer from "./components/Footer";
 import { RecoilRoot, useRecoilState } from "recoil";
 import cls from "./utils/cls";
+import Dialog from "./components/Dialog";
 
 
 
@@ -19,31 +20,25 @@ function MediaLibrary(props) {
 
     const {
         isOpen = false,
-        onClose = () => {},
-        onConfirm = () => {},
+        onClose = () => { },
+        onConfirm = () => { },
+
+        formProps = {},
     } = props;
 
     useEffect(() => {
         if (isOpen) ref.current?.showModal();
-        else        ref.current?.close();
+        else ref.current?.close();
     }, [isOpen]);
 
     return <>
         <RecoilRoot>
-            <dialog
-                ref={ref}
-                className={cls(
-                    "bg-white dark:bg-neutral-800 rounded-lg border-2 border-t-slate-200/70 border-slate-100 dark:border-neutral-700/30 backdrop:bg-black/70",
-                    "open:flex z-[100]",
-                    "min-w-[500px] lg:min-w-[calc(100vw-100px)] lg:min-h-[calc(100vh-100px)]"
-                )}
-                // onBlur={() => ref.current.close()}
-            >
+            <Dialog ref={ref} formProps={formProps}>
 
                 {/* <LeftSideBar /> */}
 
                 <div className="flex flex-col flex-1">
-                    <Header ref={ref} />
+                    <Header onClose={onClose} />
                     <Main isOpen={isOpen} />
                     <Footer
                         onClose={onClose}
@@ -53,7 +48,7 @@ function MediaLibrary(props) {
 
                 <RightSideBar />
 
-            </dialog>
+            </Dialog>
         </RecoilRoot>
     </>
 }
