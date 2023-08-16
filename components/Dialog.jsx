@@ -29,7 +29,7 @@ export default forwardRef(({ children, formProps }, ref) => {
             ref={ref}
             className={cls(
                 "vt--rounded-box !p-0 !border-0 relative backdrop:bg-black/70 open:flex z-[100]",
-                "min-w-[calc(100vw-1em)] min-h-[calc(100vh-1em)] md:min-w-[500px] lg:min-w-[calc(100vw-100px)] lg:min-h-[calc(100vh-100px)]",
+                "min-w-[calc(100vw-1em)] min-h-[calc(100vh-1em)] md:min-h-[calc(100vh-2em)] md:min-w-[calc(100vw-2em)] lg:min-w-[calc(100vw-100px)] lg:min-h-[calc(100vh-100px)]",
             )}
             onDrop={(e) => {
                 handleDragLeaveDrop(e)

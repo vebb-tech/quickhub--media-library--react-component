@@ -94,18 +94,25 @@ export default ({ isOpen, user, user_tenants }) => {
 
     // console.log(files)
 
-    const classes = "main flex-1 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 2xl:grid-cols-8 gap-2 md:gap-4 p-2 md:p-4"
+    const classes = "main flex-1 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 content-baseline p-2 md:p-4" // gap-2 md:gap-4
 
     // Loading state animate-pulse
-    if (!files)
-        return <div className={classes}>
-            {[
-                { temp: true },
-                { temp: true },
-                { temp: true },
-                { temp: true }
-            ].map((file, index) => <MediaFile key={`media-file-${index}`} {...{ file }} />)}
-        </div>
+    // if (!files)
+    return <div className={classes}>
+        {[
+            { temp: true },
+            { temp: true },
+            { temp: true },
+            { temp: true },
+            { temp: true },
+            { temp: true },
+            { temp: true },
+            { temp: true },
+            { temp: true },
+            { temp: true },
+            { temp: true }
+        ].map((file, index) => <MediaFile key={`media-file-${index}`} {...{ file }} />)}
+    </div>
 
     return <div className={classes}>
         {files.map((file, index) => <MediaFile key={`media-file-${index}`} {...{ file }} />)}
@@ -121,16 +128,21 @@ const MediaFile = ({
     return <div
         onClick={() => setSelectedFile(file)}
         className={cls(
-            "aspect-square p-2 cursor-pointer",
-            "border ring-4",
-            file?.temp
-                ? "ring-transparent"
-                : (selectedFile?.path === file?.path ? "ring-vt-500" : "ring-transparent hover:ring-vt-200")
+            "p-2 cursor-pointer aspect-square h-max"
         )}
     >
-        {file?.temp
-            ? <MountainSun className="p-2 h-full w-full fill-slate-200 animate-pulse" />
-            : <img src={file.signedUrl} />
-        }
+        <div
+            className={cls(
+                "p-2 border ring-4 aspect-square h-max",
+                file?.temp
+                    ? "ring-transparent"
+                    : (selectedFile?.path === file?.path ? "ring-vt-500" : "ring-transparent hover:ring-vt-200")
+            )}
+        >
+            {file?.temp
+                ? <MountainSun className="p-2 h-full w-full fill-slate-200 animate-pulse" />
+                : <img src={file.signedUrl} />
+            }
+        </div>
     </div>
 }
