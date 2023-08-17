@@ -49,7 +49,7 @@ export default (props) => {
                 // outerClassName: undefined,
             }}
             className={cls(
-                "vt--rounded-box--color peer w-full px-3 py-2.5 md:px-4 md:py-3 rounded-lg text-sm md:text-md font-[300]",
+                "vt--rounded-box--color peer w-full px-3 py-3 md:px-4 md:py-3 rounded-lg text-sm md:text-md font-[300]",
                 "outline outline-1 outline-slate-300/70 group-hover:outline-slate-400/70 focus:!outline-vt-500 placeholder-neutral-400/80",
                 // DARK
                 "dark:placeholder-neutral-500 dark:outline-neutral-600 dark:text-white",
@@ -60,7 +60,7 @@ export default (props) => {
         {/* LABEL */}
         {label && (
             <label htmlFor={id} className={cls(
-                "vt--rounded-box--color absolute -top-3 left-2 md:left-3 p-1 text-xs text-slate-500/80 group-hover:text-slate-500 peer-focus:text-vt-500 z-[1]",
+                "vt--rounded-box--color absolute w-max -top-2 left-2 md:left-3 px-1 text-xs text-slate-500/80 group-hover:text-slate-500 peer-focus:text-vt-500 z-[1]",
                 // DARK
                 "dark:text-slate-400/80"
             )}>

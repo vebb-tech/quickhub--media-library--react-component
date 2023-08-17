@@ -1,4 +1,6 @@
-import React, { forwardRef, useState } from "react";
+'use client'
+
+import React, { forwardRef, useState, useTransition } from "react";
 import cls from "../utils/cls";
 import { useRecoilState } from "recoil";
 import { uploadFilesState } from "../atoms/uploadFilesState";
@@ -8,8 +10,8 @@ import settings from "../settings";
 
 export default forwardRef(({ children, formProps }, ref) => {
 
+    let [isPending, startTransition] = useTransition();
     const [files, setFiles] = useRecoilState(uploadFilesState);
-
     const [isOver, setIsOver] = useState(false);
 
     const handleDragEnterOver = e => {
@@ -24,12 +26,19 @@ export default forwardRef(({ children, formProps }, ref) => {
         setIsOver(false);
     };
 
+    console.log({ isPending })
+
+    const mergedSettings = {
+        ...settings.formProps,  // Default
+        ...formProps            // User props
+    }
+
     return (
         <dialog
             ref={ref}
             className={cls(
                 "vt--rounded-box !p-0 !border-0 relative backdrop:bg-black/70 open:flex z-[100]",
-                "min-w-[calc(100vw-1em)] min-h-[calc(100vh-1em)] md:min-h-[calc(100vh-2em)] md:min-w-[calc(100vw-2em)] lg:min-w-[calc(100vw-100px)] lg:min-h-[calc(100vh-100px)]",
+                "min-w-[calc(100vw-1em)] min-h-[calc(100dvh-4em)] md:min-h-[calc(100vh-2em)] md:min-w-[calc(100vw-2em)] lg:min-w-[calc(100vw-100px)] lg:min-h-[calc(100vh-100px)]",
             )}
             onDrop={(e) => {
                 handleDragLeaveDrop(e)
@@ -52,10 +61,7 @@ export default forwardRef(({ children, formProps }, ref) => {
 
             {files?.length > 0 && (
                 <form
-                    {...{
-                        ...settings.formProps,  // Default
-                        ...formProps            // User props
-                    }}
+                    {...mergedSettings}
                     className={cls(
                         "absolute p-3 flex items-center justify-center inset-0 bg-black/50 z-10",
                         formProps?.className
@@ -69,24 +75,33 @@ export default forwardRef(({ children, formProps }, ref) => {
                         <div className="col-span-1 row-span-2">
                             <Input
                                 label="Name"
+                                name="name"
                                 defaultValue={files[0].name}
                             />
                             <Input
                                 label="Alt"
+                                name="alt"
                                 placeholder="Alternate text"
                             />
                             <Input
                                 label="Caption"
+                                name="caption"
                                 placeholder="Caption describing the image"
                             />
                             <Input
                                 label="Credit"
+                                name="credit"
                                 placeholder="Photo by Jane Doe"
                             />
                         </div>
 
                         <div className="flex gap-2 col-span-1 mt-4 sm:mt-0">
-                            <Button>Upload</Button>
+                            {/* TODO: send all data via paramater instead of form name */}
+                            <Button 
+                                onClick={() => startTransition(() => mergedSettings.action(12345678))}
+                            >
+                                Upload
+                            </Button>
                             <Button variant="secondary">Cancel</Button>
                         </div>
 

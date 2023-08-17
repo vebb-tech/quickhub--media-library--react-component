@@ -55,7 +55,7 @@ const fetchFiles = async ({
 
 }
 
-const verifyUserAccess = async ({ user, user_tenants }) => {
+const verifyUserAccess = async ({ user, user_tenants, ac }) => {
 
     if (!user_tenants) {
 
@@ -70,6 +70,7 @@ const verifyUserAccess = async ({ user, user_tenants }) => {
                 .select('*, tenants(*)')
                 .eq('user_id', user.id)
                 .single()
+                .abortSignal(ac.signal)
 
             user_tenants = data
         }
@@ -87,32 +88,28 @@ export default ({ isOpen, user, user_tenants }) => {
     const [files, setFiles] = useRecoilState(filesState)
 
     useEffect(() => {
+        const ac = new AbortController()
+
         if (!files && isOpen)
-            verifyUserAccess({ user, user_tenants })
+            verifyUserAccess({ user, user_tenants, ac })
                 .then(data => setFiles(data))
+
+        return () => { ac.abort() }
     }, [isOpen]);
 
     // console.log(files)
 
-    const classes = "main flex-1 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 content-baseline p-2 md:p-4" // gap-2 md:gap-4
+    const classes = "main flex-1 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 content-baseline p-2 md:p-4" // gap-2 md:gap-4
 
     // Loading state animate-pulse
     if (!files)
-    return <div className={classes}>
-        {[
-            { temp: true },
-            { temp: true },
-            { temp: true },
-            { temp: true },
-            { temp: true },
-            { temp: true },
-            { temp: true },
-            { temp: true },
-            { temp: true },
-            { temp: true },
-            { temp: true }
-        ].map((file, index) => <MediaFile key={`media-file-${index}`} {...{ file }} />)}
-    </div>
+        return <div className={classes + " overflow-auto"}>
+            {new Array(56)
+                .fill({ temp: true })
+                .map((file, index) => (
+                    <MediaFile key={`media-file-${index}`} {...{ file }} />
+                ))}
+        </div>
 
     return <div className={classes}>
         {files.map((file, index) => <MediaFile key={`media-file-${index}`} {...{ file }} />)}
