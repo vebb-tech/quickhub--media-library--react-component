@@ -1,5 +1,3 @@
-'use client'
-
 import React, { forwardRef, useState, useTransition } from "react";
 import cls from "../utils/cls";
 import { useRecoilState } from "recoil";
@@ -26,7 +24,7 @@ export default forwardRef(({ children, formProps }, ref) => {
         setIsOver(false);
     };
 
-    console.log({ isPending })
+    // console.log({ isPending })
 
     const mergedSettings = {
         ...settings.formProps,  // Default

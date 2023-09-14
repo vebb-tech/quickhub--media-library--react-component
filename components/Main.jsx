@@ -1,5 +1,4 @@
 import { forwardRef, useEffect, useRef, useState } from "react"
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRecoilState } from "recoil";
 import { filesState } from "../atoms/filesState";
 import cls from "../utils/cls";
@@ -7,8 +6,7 @@ import { selectedFileState } from "../atoms/selectedFileState";
 
 import MountainSun from '../assets/icons/mountain-sun'
 
-const supabase = createClientComponentClient()
-
+import supabase from "@/supabase";
 // supabase
 //     .storage
 //     .getBucket(`media-library`)

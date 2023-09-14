@@ -1,14 +1,10 @@
-"use client"
-
 import { forwardRef, useEffect, useRef, useState } from "react"
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 // import LeftSideBar from "./components/LeftSideBar";
 import RightSideBar from "./components/RightSideBar";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
 import { RecoilRoot, useRecoilState } from "recoil";
-import cls from "./utils/cls";
 import Dialog from "./components/Dialog";
 
 

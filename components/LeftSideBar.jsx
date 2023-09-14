@@ -1,13 +1,11 @@
-"use client";
+import { useEffect, useState } from "react";
 
 import { useRecoilState } from "recoil"
 import { leftSidebarState } from "../atoms/leftSidebarState"
 import cls from "../utils/cls"
 import IconButton from "./IconButton"
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { useEffect, useState } from "react";
+import supabase from "@/supabase";
 
-const supabase = createClientComponentClient()
 
 const fetchFiles = async ({ 
     user_tenants, 
