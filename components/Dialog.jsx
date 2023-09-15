@@ -1,4 +1,5 @@
-import React, { forwardRef, useState, useTransition } from "react";
+import { useState } from "preact/hooks";
+import { forwardRef } from 'preact/compat';
 import cls from "../utils/cls";
 import { useRecoilState } from "recoil";
 import { uploadFilesState } from "../atoms/uploadFilesState";
@@ -8,7 +9,6 @@ import settings from "../settings";
 
 export default forwardRef(({ children, formProps }, ref) => {
 
-    let [isPending, startTransition] = useTransition();
     const [files, setFiles] = useRecoilState(uploadFilesState);
     const [isOver, setIsOver] = useState(false);
 
@@ -96,7 +96,7 @@ export default forwardRef(({ children, formProps }, ref) => {
                         <div className="flex gap-2 col-span-1 mt-4 sm:mt-0">
                             {/* TODO: send all data via paramater instead of form name */}
                             <Button 
-                                onClick={() => startTransition(() => mergedSettings.action(12345678))}
+                                onClick={() => mergedSettings.action(12345678)}
                             >
                                 Upload
                             </Button>

@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "preact/hooks"
 // import LeftSideBar from "./components/LeftSideBar";
 import RightSideBar from "./components/RightSideBar";
 import Header from "./components/Header";
@@ -53,7 +53,7 @@ export default MediaLibrary
 
 
 // TODO: Change so this component is lazy-loaded
-// import React, { lazy, Suspense } from 'react';
+// import { lazy, Suspense } from 'react';
 
 // const MediaLibraryComponent = lazy(() => import('./MediaLibraryComponent.jsx'));
 

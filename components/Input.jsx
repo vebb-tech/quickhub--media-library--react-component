@@ -1,5 +1,5 @@
 import cls from "@/utils/cls";
-import { useId } from "react";
+import { useId } from "preact/hooks";
 
 
 export default (props) => {

@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef } from 'preact/compat';
 import { useRecoilState } from "recoil";
 import { selectedFileState } from "../atoms/selectedFileState";
 import cls from "../utils/cls";
