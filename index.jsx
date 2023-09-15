@@ -6,10 +6,11 @@ import Main from "./components/Main";
 import Footer from "./components/Footer";
 import { RecoilRoot, useRecoilState } from "recoil";
 import Dialog from "./components/Dialog";
+import { createPortal } from "preact/compat";
 
 
 // const MediaLibrary = forwardRef(
-function MediaLibrary(props) {
+function MediaLibraryComponent(props) {
 
     const ref = useRef(null);
 
@@ -48,6 +49,13 @@ function MediaLibrary(props) {
     </>
 }
 // )
+
+const MediaLibrary = (props) => {
+    const container = document.getElementById('media-library');
+    return container
+        ? createPortal(<MediaLibraryComponent {...props}/>, container)
+        : <MediaLibraryComponent {...props}/>
+}
 
 export default MediaLibrary
 
