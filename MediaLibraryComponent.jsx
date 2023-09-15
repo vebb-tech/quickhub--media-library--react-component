@@ -8,8 +8,10 @@ import { RecoilRoot, useRecoilState } from "recoil";
 import Dialog from "./components/Dialog";
 
 
+// TODO: Change so this component is lazy-loaded
+
 // const MediaLibrary = forwardRef(
-function MediaLibrary(props) {
+function MediaLibraryComponent(props) {
 
     const ref = useRef(null);
 
@@ -49,16 +51,4 @@ function MediaLibrary(props) {
 }
 // )
 
-export default MediaLibrary
-
-
-// TODO: Change so this component is lazy-loaded
-// import React, { lazy, Suspense } from 'react';
-
-// const MediaLibraryComponent = lazy(() => import('./MediaLibraryComponent.jsx'));
-
-// const MediaLibrary = (props) => <Suspense fallback={<>Loading MediaLibrary</>}>
-//     <MediaLibraryComponent {...props} />
-// </Suspense>
-
-// export default MediaLibrary
+export default MediaLibraryComponent
