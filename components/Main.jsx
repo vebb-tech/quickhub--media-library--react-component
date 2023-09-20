@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "preact/hooks"
-import { forwardRef } from 'preact/compat';
+import { useEffect, useRef, useState } from 'react'
+import { forwardRef } from 'react';
 import { useRecoilState } from "recoil";
 import { filesState } from "../atoms/filesState";
 import cls from "../utils/cls";

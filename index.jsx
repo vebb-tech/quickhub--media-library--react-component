@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "preact/hooks"
+import { useEffect, useRef } from 'react'
 // import LeftSideBar from "./components/LeftSideBar";
 import RightSideBar from "./components/RightSideBar";
 import Header from "./components/Header";
@@ -6,7 +6,7 @@ import Main from "./components/Main";
 import Footer from "./components/Footer";
 import { RecoilRoot, useRecoilState } from "recoil";
 import Dialog from "./components/Dialog";
-import { createPortal } from "preact/compat";
+import { createPortal } from 'react';
 
 
 // const MediaLibrary = forwardRef(
